@@ -5,6 +5,7 @@ const { User, Post, Comment } = require('../../models');
 router.get('/', async (req, res) => {
 	try {
 		const userData = await User.findAll({
+			attributes: { exclude: ['password'] },
 			include: [
 				{ model: Post },
 				{ model: Comment }
