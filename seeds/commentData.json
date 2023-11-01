@@ -1,0 +1,27 @@
+[
+	{
+		"message": "yo mista white, chill yo",
+		"user_id": "3",
+		"post_id": "1"
+	},
+	{
+		"message": "jesse",
+		"user_id": "2",
+		"post_id": "1"
+	},
+	{
+		"message": "i am the eyebrows",
+		"user_id": "1",
+		"post_id": "2"
+	},
+	{
+		"message": "bogdan your water supply is poisoned",
+		"user_id": "2",
+		"post_id": "3"
+	},
+	{
+		"message": "walter, you may have car wash",
+		"user_id": "1",
+		"post_id": "3"
+	}
+]
