@@ -1,7 +1,0 @@
-const router = require('express').Router();
-const { User } = require('../models');
-// PATH /
-
-
-
-module.exports = router;
