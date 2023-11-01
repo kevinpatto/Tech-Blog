@@ -54,14 +54,14 @@ router.get('/profile', auth, async (req, res) => {
 
 		res.render('dashBoard', {
 			...user,
-			logged_in: true
+			logged_in: req.session.logged_in
 		});
 	} catch (err) {
 		res.status(500).json(err);
 	}
 });
 
-router.get('/post/:id', async (req, res) => {
+router.get('/post/:id', auth, async (req, res) => {
 	try {
 		const postData = await Post.findByPk(req.params.id, {
 			include: [{	model: Comment }]
