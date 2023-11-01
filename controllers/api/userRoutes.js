@@ -1,6 +1,20 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 // SERVER PATH /api/users
+
+router.get('/', async (req, res) => {
+	try {
+		const userData = await User.findAll({
+			include: [
+				{ model: Post },
+				{ model: Comment }
+			],
+		});
+		res.status(200).json(userData);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
 
 router.post('/', async (req, res) => {
 	try {
@@ -41,7 +55,7 @@ router.post('/login', async (req, res) => {
 			req.session.user_id = userData.id;
 			req.session.logged_in = true;
 
-			res.json({ user: userData, message: 'You are now logged in!' });
+			res.redirect('/profile');
 		});
 
 	} catch (err) {
@@ -54,6 +68,7 @@ router.post('/logout', (req, res) => {
 		req.session.destroy(() => {
 			res.status(204).end();
 		});
+		
 	} else {
 		res.status(404).end();
 	}
